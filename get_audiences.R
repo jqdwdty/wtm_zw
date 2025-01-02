@@ -667,7 +667,7 @@ update_workflow_schedule <- function(should_continue = TRUE) {
     new_cron <- "    - cron: '0 1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * *'"
   } else {
     # If we're done for the day, set to start fresh tomorrow at 1 AM
-    new_cron <- "    - cron: '0 1 * * *'"
+    new_cron <- glue::glue("    - cron: '0 {sample(1:23, 1)} * * *'")
   }
   
   # Update the cron line
